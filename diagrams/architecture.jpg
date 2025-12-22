@@ -1,1 +1,21 @@
+Circular Architecture & Workflow Description
+
+The diagram illustrates the Public Fund Release Smart Contract Architecture as a continuous circular workflow, emphasizing transparency, control, and accountability throughout the fund lifecycle.
+
+Donors
+The process begins with donors contributing funds. These funds are not sent directly to recipients but are instead locked into the smart contract, ensuring that no single party has unilateral control.
+
+Smart Contract (On-chain Logic)
+The smart contract acts as the core enforcement layer. It securely locks funds, validates committee approvals, checks deadlines (expiry), and enforces withdrawal rules based on predefined conditions encoded on-chain.
+
+Committee
+Authorized committee members review withdrawal requests. Using cryptographic signatures, they approve or reject requests. The contract verifies that the required number of valid approvals is met before any release can occur.
+
+Recipients
+Once approval conditions are satisfied and the request is within the allowed time window, recipients are able to withdraw the funds. If conditions are not met, withdrawals are rejected by the validator.
+
+Emulator Testing / Simulation (Off-chain Logic)
+The final stage represents testing and validation using emulator scenarios. Transactions such as successful withdrawals, failed approvals, invalid signers, and expiry-based refunds are simulated to demonstrate correct contract behavior. These tests validate the logic conceptually before deployment.
+
+The circular structure highlights that the system is iterative and repeatable, allowing multiple funding rounds while maintaining consistent security guarantees enforced by the smart contract.
 
