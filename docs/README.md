@@ -107,7 +107,7 @@ The system is divided into **three logical layers**:
 +----------------+  +------------------+
 ```
 
-(Visual version will be placed in `diagrams/architecture.png`)
+(Visual version will be placed in `diagrams/architecture.jpg`)
 
 ---
 
@@ -159,7 +159,7 @@ The system is divided into **three logical layers**:
 [Beneficiary Withdraws Funds]
 ```
 
-(Visual version will be placed in `diagrams/workflow.png`)
+(Visual version will be placed in `diagrams/workflow.jpg`)
 
 ---
 
