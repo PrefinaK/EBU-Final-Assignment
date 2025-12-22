@@ -1,0 +1,81 @@
+1. Architecture Diagram (architecture.png)
+
+
+Elements to include:
+
+User Wallet
+
+Off-chain code (Transaction building, API calls)
+
+On-chain validator (FundReleaseValidator)
+
+FundDatum & FundAction structure (highlight fields like fdOwner, fdReceiver, fdSigned, fdMinApprovals, fdExpiry)
+
+Cardano blockchain
+
+Mind-map style layout:
+
+User Wallet
+   |
+   v
+Off-chain Code
+   |---> Builds transaction with FundDatum + FundAction
+   v
+On-Chain Validator (FundReleaseValidator)
+   |---> Validates: Sign / Withdraw / Reclaim
+   v
+Cardano Blockchain
+
+2. Workflow Diagram (workflow.png)
+
+Goal: Show the step-by-step execution of a fund release.
+
+Sequence:
+
+User sends request → Off-chain constructs transaction
+
+Transaction contains datum & redeemer
+
+Validator script checks:
+
+Sign → Is the signer part of committee & not already signed?
+
+Withdraw → Enough approvals & receiver signature?
+
+Reclaim → Expired & insufficient approvals & owner signature?
+
+If valid → funds released
+
+Mind-map style layout:
+
+[User Request]
+      |
+      v
+[Off-Chain Code builds Tx]
+      |
+      v
+[Validator Script]
+      |---> Sign? (Committee check, not signed)
+      |---> Withdraw? (Approvals >= Min, Receiver signed)
+      |---> Reclaim? (Expired, Insufficient, Owner signed)
+      |
+      v
+[FUNDS RELEASED on Blockchain]
+
+3. Smart Contract Data Structure
+
+Include as part of architecture diagram or separately:
+
+FundDatum:
+  fdOwner        :: PubKeyHash
+  fdReceiver     :: PubKeyHash
+  fdCommittee    :: [PubKeyHash]
+  fdSigned       :: [PubKeyHash]
+  fdMinApprovals :: Integer
+  fdExpiry       :: POSIXTime
+
+FundAction:
+  Sign | Withdraw | Reclaim
+
+
+  
